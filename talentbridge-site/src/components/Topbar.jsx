@@ -82,33 +82,49 @@ const Topbar = () => {
 
       {/* Mobile Nav */}
       <div className={clsx(
-        "fixed inset-0 z-40 bg-white pt-24 px-6 lg:hidden transition-all duration-500 ease-out",
-        menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
+        "fixed inset-0 z-40 lg:hidden transition-all duration-500 ease-out",
+        menuOpen
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
       )}>
-        <nav className="flex flex-col gap-2">
-          {navLinks.map((link, index) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              style={{ transitionDelay: menuOpen ? `${index * 50}ms` : '0ms' }}
-              className={({ isActive }) => clsx(
-                "text-lg font-medium flex items-center justify-between p-4 rounded-xl transition-all duration-300",
-                isActive 
-                  ? "text-primary-600 bg-primary-50" 
-                  : "text-secondary-700 hover:bg-secondary-50",
-                menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-              )}
+        <div className={clsx(
+          "absolute inset-0 bg-white/95 backdrop-blur-xl shadow-2xl transition-opacity duration-500",
+          menuOpen ? "opacity-100" : "opacity-0"
+        )} style={{ zIndex: 0, pointerEvents: 'none' }}></div>
+        <div className={clsx(
+          "absolute inset-0 pt-16 px-4 flex items-start justify-center transition-transform duration-500 z-10",
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        )}>
+          <div className={clsx(
+            "w-full max-w-sm bg-white rounded-3xl p-6 shadow-2xl border border-secondary-100",
+            "space-y-1 relative"
+          )}>
+            <button
+              className="absolute top-4 right-4 rounded-full p-1.5 text-secondary-500 hover:text-secondary-900 bg-secondary-100/70 hover:bg-secondary-200 transition"
+              aria-label="Close menu"
               onClick={() => setMenuOpen(false)}
             >
-              {link.label}
-              <ChevronRight size={18} className="text-secondary-400" />
-            </NavLink>
-          ))}
-          <div className="flex flex-col gap-3 mt-6 pt-6 border-t border-secondary-100">
-            <button className="btn btn-secondary w-full justify-center">Sign in</button>
-            <button className="btn btn-primary w-full justify-center">Post a Role</button>
+              <X size={18} />
+            </button>
+            {navLinks.map((link, index) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={({ isActive }) => clsx(
+                  "block text-lg font-semibold rounded-2xl px-4 py-3 transition",
+                  isActive ? "bg-primary-50 text-primary-600" : "text-secondary-700 hover:bg-secondary-50"
+                )}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </NavLink>
+            ))}
+            <div className="mt-4 gap-3 flex flex-col">
+              <button className="btn btn-secondary w-full justify-center">Sign in</button>
+              <button className="btn btn-primary w-full justify-center">Post a Role</button>
+            </div>
           </div>
-        </nav>
+        </div>
       </div>
     </header>
   )
