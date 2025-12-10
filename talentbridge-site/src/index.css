@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Primary blues from design */
+  --color-primary-50: #EDF4FF;
+  --color-primary-100: #DDEBFF;
+  --color-primary-200: #C7D9FF;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #2563FF;
+  --color-primary-600: #1B4FD8;
+  --color-primary-700: #0052CC;
+  --color-primary-800: #003FCE;
+  --color-primary-900: #0064E0;
+  --color-primary-950: #172554;
+
+  /* Refined neutral slate */
+  --color-secondary-50: #F5F7FB;
+  --color-secondary-100: #f1f5f9;
+  --color-secondary-200: #e2e8f0;
+  --color-secondary-300: #cbd5e1;
+  --color-secondary-400: #94a3b8;
+  --color-secondary-500: #6B7280;
+  --color-secondary-600: #4B5563;
+  --color-secondary-700: #334155;
+  --color-secondary-800: #1e293b;
+  --color-secondary-900: #111827;
+  --color-secondary-950: #020617;
+
+  /* Orange accent from design */
+  --color-accent-50: #FFF8EB;
+  --color-accent-100: #FEF3C7;
+  --color-accent-200: #FDE68A;
+  --color-accent-300: #FCD34D;
+  --color-accent-400: #FBBF24;
+  --color-accent-500: #F6A51A;
+  --color-accent-600: #D97706;
+  --color-accent-700: #B45309;
+  --color-accent-800: #92400E;
+  --color-accent-900: #78350F;
+  --color-accent-950: #451A03;
+
+  /* Emerald for success states */
+  --color-success-50: #ecfdf5;
+  --color-success-500: #10b981;
+  --color-success-600: #059669;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    @apply text-secondary-700 bg-secondary-50 antialiased;
+  }
+  
+  a, button {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background-color: rgba(246, 165, 26, 0.3);
+    color: #0f172a;
+  }
+  ::-moz-selection {
+    background-color: rgba(246, 165, 26, 0.35);
+    color: #0f172a;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply font-bold text-secondary-900 tracking-tight;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary-100;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary-300 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-secondary-400;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 transform hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500 shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/30;
+  }
+  .btn-secondary {
+    @apply bg-white text-secondary-700 border-2 border-primary-500 hover:bg-primary-50 focus:ring-primary-500 shadow-sm hover:shadow-md;
+  }
+  .btn-accent {
+    @apply bg-accent-500 text-white hover:bg-accent-600 focus:ring-accent-500 shadow-lg shadow-accent-500/25;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-secondary-600 hover:bg-secondary-100 hover:text-secondary-900;
+  }
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .card {
+    @apply bg-white rounded-2xl border border-secondary-100 shadow-sm hover:shadow-xl transition-all duration-300;
+  }
+  .card-glass {
+    @apply bg-white/70 backdrop-blur-xl rounded-2xl border border-white/20 shadow-xl;
+  }
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-500 to-accent-500;
+  }
+  .section-padding {
+    @apply py-24 lg:py-32;
+  }
+  .badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-[0.18em];
+  }
+  .badge-primary {
+    @apply bg-primary-100 text-primary-700 border border-primary-200;
+  }
+  .badge-accent {
+    @apply bg-accent-500 text-white;
+  }
+  
+  /* Animated gradient background */
+  .gradient-bg {
+    background: linear-gradient(-45deg, #1e1b4b, #312e81, #4338ca, #1e293b);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Mesh gradient - Blue theme */
+  .mesh-gradient {
+    background: linear-gradient(135deg, #0052CC 0%, #003FCE 50%, #0064E0 100%);
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    will-change: opacity, transform;
+  }
+
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      transition: none;
+      transform: none;
+    }
+  }
+  
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: float 6s ease-in-out 2s infinite;
+  }
+  
+  /* Glow effect */
+  .glow {
+    box-shadow: 0 0 60px rgba(37, 99, 255, 0.3);
+  }
+  .glow-accent {
+    box-shadow: 0 0 60px rgba(246, 165, 26, 0.3);
+  }
+}
