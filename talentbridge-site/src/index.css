@@ -188,4 +188,32 @@
   .glow-accent {
     box-shadow: 0 0 60px rgba(246, 165, 26, 0.3);
   }
+
+  .magic-cursor {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(246, 165, 26, 0.95);
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    mix-blend-mode: normal;
+    opacity: 0.9;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+  }
+
+  .magic-cursor.is-active {
+    background: var(--color-accent-500);
+    transform: translate(-50%, -50%) scale(1.65);
+    box-shadow: 0 0 16px rgba(246, 165, 26, 0.4);
+  }
+
+  .magic-cursor.is-hidden {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
 }

@@ -359,10 +359,12 @@ const HomePage = () => {
                   <p className="text-secondary-600 mb-6 leading-relaxed">{card.description}</p>
                   <Link 
                     to="/employers" 
-                    className="inline-flex items-center gap-2 text-primary-600 font-semibold group/link"
+                    className="inline-flex items-center gap-3 font-semibold text-primary-600 group"
                   >
                     Explore roles 
-                    <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
+                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-transparent bg-accent-500/15 text-accent-500 transition-all duration-300 group-hover:bg-accent-500 group-hover:text-white shadow-sm">
+                      <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
                   </Link>
                 </div>
               </div>
@@ -534,8 +536,11 @@ const HomePage = () => {
               <h2 className="text-3xl lg:text-4xl font-heading font-bold text-secondary-900 mb-3">Featured Roles</h2>
               <p className="text-secondary-600">Verified positions from trusted employers, ready to interview</p>
             </div>
-            <Link to="/job-seekers" className="btn btn-secondary gap-2">
-              View All Jobs <ArrowRight size={16} />
+            <Link to="/job-seekers" className="btn btn-secondary gap-2 inline-flex items-center group">
+              View All Jobs
+              <span className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-transparent bg-accent-500/15 text-accent-500 transition-all duration-300 group-hover:bg-accent-500 group-hover:text-white shadow-sm">
+                <ArrowRight size={16} />
+              </span>
             </Link>
           </div>
           
@@ -657,8 +662,11 @@ const HomePage = () => {
               <h2 className="text-3xl lg:text-4xl font-heading font-bold text-secondary-900 mb-3">Latest Resources</h2>
               <p className="text-secondary-600">Insights, guides, and data to power your hiring strategy</p>
             </div>
-            <Link to="/resources" className="btn btn-secondary gap-2">
-              View All <ArrowRight size={16} />
+            <Link to="/resources" className="btn btn-secondary gap-2 inline-flex items-center group">
+              View All
+              <span className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-transparent bg-accent-500/15 text-accent-500 transition-all duration-300 group-hover:bg-accent-500 group-hover:text-white shadow-sm">
+                <ArrowRight size={16} />
+              </span>
             </Link>
           </div>
           
